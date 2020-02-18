@@ -21,6 +21,7 @@ import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon} from '../Drawer/st
 import Footer from '../Footer';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-router-dom";
 
 const drawerWidth = 300;
 
@@ -91,6 +92,31 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
   const [aux, setAux] = React.useState([]);
+  const history = useHistory();
+
+  function getAdotarGatinhos(){    
+    return (
+      history.push('/AdotarGatinhos')
+    );
+  }
+
+  function getSendGatinhos(){    
+    return (
+      history.push('/SendGatinhos')
+    );
+  }
+
+  function getEmailGatinhos(){    
+    return (
+      history.push('/EmailGatinhos')
+    );
+  }
+
+  function getOnibus(){    
+    return (
+      history.push('/Onibus')
+    );
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -151,27 +177,27 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          <ListItem button key={'Enviar fotos de gatinhos'}>
+          <ListItem button key={'Enviar fotos de gatinhos'} onClick={() => getSendGatinhos()}>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
-          <ListItem button key={'Enviar gatinhos via email'}>
+          <ListItem button key={'Enviar gatinhos via email'} onClick={() => getEmailGatinhos()}>
             <ListItemIcon><MailIcon /></ListItemIcon>
             <ListItemText primary='Enviar gatinhos via email' />
           </ListItem>
-          <ListItem button key={'Pegar ônibus'}>
+          <ListItem button key={'Pegar ônibus'} onClick={() => getOnibus()}>
             <ListItemIcon><AirportShuttleIcon /></ListItemIcon>
             <ListItemText primary='Pegar ônibus' />
           </ListItem>
-          <ListItem button key={'Procurar namorada'}>
+          <ListItem button key={'Adotar gatinho'} onClick={() => getAdotarGatinhos()}>
             <ListItemIcon><FavoriteIcon /></ListItemIcon>
-            <ListItemText primary='Procurar namorada' />
+            <ListItemText primary='Enviar email com gatinho' />
           </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        
+        <Title>A importância de enviar gatinhos</Title>     
       </main>
     </div>
   );

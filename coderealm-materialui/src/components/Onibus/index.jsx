@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -89,9 +89,9 @@ const useStyles = makeStyles(theme => ({
 export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
-  const [aux, setAux] = useState(() => JSON.parse(localStorage.getItem('tasks')) || []);
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState('');
+  const [aux, setAux] = React.useState([]);
   const history = useHistory();
 
   function getAdotarGatinhos(){    
@@ -116,16 +116,6 @@ export default function MiniDrawer() {
     return (
       history.push('/Onibus')
     );
-  }
-
-  useEffect(()=> {
-    const data = JSON.stringify(aux);
-    localStorage.setItem('tasks', data);
-  },[aux])
-
-  function handleAdd(){
-    setAux([...aux, value]);
-    setValue('');
   }
 
   const handleDrawerOpen = () => {
@@ -207,18 +197,7 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Title>A importância dos ToDoLists</Title>
-        <Text>O cuidado em identificar pontos críticos na consulta aos diversos militantes maximiza as possibilidades por conta dos modos de operação convencionais. Gostaria de enfatizar que o fenômeno da Internet cumpre um papel essencial na formulação dos paradigmas corporativos. O que temos que ter sempre em mente é que o desenvolvimento contínuo de distintas formas de atuação facilita a criação das diretrizes de desenvolvimento para o futuro. Todavia, o consenso sobre a necessidade de qualificação causa impacto indireto na reavaliação de alternativas às soluções ortodoxas.Podemos já vislumbrar o modo pelo qual a revolução dos costumes auxilia a preparação e a composição do impacto na agilidade decisória. As experiências acumuladas demonstram que o aumento do diálogo entre os diferentes setores produtivos estende o alcance e a importância das diversas correntes de pensamento. No entanto, não podemos esquecer que a execução dos pontos do programa faz parte de um processo de gerenciamento do orçamento setorial. No mundo atual, a consolidação das estruturas estimula a padronização das condições inegavelmente apropriadas. Acima de tudo, é fundamental ressaltar que o desafiador cenário globalizado oferece uma interessante oportunidade para verificação das posturas dos órgãos dirigentes com relação às suas atribuições. O incentivo ao avanço tecnológico, assim como a crescente influência da mídia promove a alavancagem das novas proposições. Assim mesmo, a estrutura atual da organização pode nos levar a considerar a reestruturação de todos os recursos funcionais envolvidos. Caros amigos, a mobilidade dos capitais internacionais representa uma abertura para a melhoria dos procedimentos normalmente adotados. Pensando mais a longo prazo, a expansão dos mercados mundiais afeta positivamente a correta previsão dos níveis de motivação departamental. Evidentemente, o início da atividade geral de formação de atitudes apresenta tendências no sentido de aprovar a manutenção dos métodos utilizados na avaliação de resultados. Nunca é demais lembrar o peso e o significado destes problemas, uma vez que a valorização de fatores subjetivos exige a precisão e a definição das condições financeiras e administrativas exigidas. Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a contínua expansão de nossa atividade prepara-nos para enfrentar situações atípicas decorrentes do processo de comunicação como um todo. Ainda assim, existem dúvidas a respeito de como a complexidade dos estudos efetuados desafia a capacidade de equalização dos índices pretendidos. A nível organizacional, a determinação clara de objetivos agrega valor ao estabelecimento da gestão inovadora da qual fazemos parte. Desta maneira, a competitividade nas transações comerciais nos obriga à análise das formas de ação. O empenho em analisar a adoção de políticas descentralizadoras acarreta um processo de reformulação e modernização dos relacionamentos verticais entre as hierarquias. A prática cotidiana prova que o acompanhamento das preferências de consumo possibilita uma melhor visão global dos conhecimentos estratégicos para atingir a excelência. Por outro lado, o novo modelo estrutural aqui preconizado não pode mais se dissociar do levantamento das variáveis envolvidas. Neste sentido, a necessidade de renovação processual assume importantes posições no estabelecimento das regras de conduta normativas. Percebemos, cada vez mais, que a constante divulgação das informações ainda não demonstrou convincentemente que vai participar na mudança das direções preferenciais no sentido do progresso. Não obstante, o surgimento do comércio virtual talvez venha a ressaltar a relatividade do sistema de formação de quadros que corresponde às necessidades. É claro que a hegemonia do ambiente político deve passar por modificações independentemente do fluxo de informações. Por conseguinte, a percepção das dificuldades é uma das consequências do sistema de participação geral. Do mesmo modo, o entendimento das metas propostas obstaculiza a apreciação da importância do retorno esperado a longo prazo.</Text>
-        <Input value={value} onChange={e =>setValue(e.target.value)}></Input>
-        <Button onClick = {handleAdd}><strong>Adicionar tarefa</strong></Button>
-        <Ul>
-          {aux.map((element, index) => {
-            return (
-              <Li key={index}>{element} <StyledDeleteIcon index={index} onClick = {() => {filter2(index)}}/></Li>
-            );
-          })}
-        </Ul>
-        <Footer />
+        <Title>A importância de usar transporte público</Title>   
       </main>
     </div>
   );
