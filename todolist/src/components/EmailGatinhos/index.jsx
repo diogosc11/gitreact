@@ -17,11 +17,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon} from './styled';
+import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon, Message} from './styled';
 import Footer from '../Footer';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
 
 const drawerWidth = 300;
 
@@ -90,6 +91,8 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState('');
+  const [aux, setAux] = React.useState([]);
   const history = useHistory();
 
   function getAdotarGatinhos(){    
@@ -123,6 +126,11 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const filter2 = useCallback((index) => {
+    const newTasks = aux.filter((task, taskIndex) => taskIndex !== index);
+    setAux(newTasks);
+  }, [aux]);
 
   return (
     <div className={classes.root}>
@@ -190,8 +198,15 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Title>A importância de adotar gatinhos</Title>
-        
+        <Title>A importância de enviar gatinhos</Title>
+        <form>
+          <Text>Nome:</Text>
+          <Input id='inputnome' size="80" autofocus='autofocus'></Input>
+          <Text>Email:</Text>
+          <Input id='inputnome' size="80" ></Input>
+          <Text>Mensagem:</Text>
+          <Message id='inputnome' size="80"></Message>
+        </form>     
       </main>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -21,7 +21,8 @@ import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon} from '../Drawer/st
 import Footer from '../Footer';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import SendGatinhos from '../SendGatinhos';
 
 const drawerWidth = 300;
 
@@ -89,39 +90,16 @@ const useStyles = makeStyles(theme => ({
 export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
-  const [aux, setAux] = useState(() => JSON.parse(localStorage.getItem('tasks')) || []);
-  const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState('');
+  const [aux, setAux] = React.useState([]);
 
-  function getAdotarGatinhos(){    
-    return (
-      history.push('/AdotarGatinhos')
+  function getSendGatinhos(){
+    console.log('Clicou')
+    return ( 
+        <Link to='/SendGatinhos'></Link>
     );
   }
-
-  function getSendGatinhos(){    
-    return (
-      history.push('/SendGatinhos')
-    );
-  }
-
-  function getEmailGatinhos(){    
-    return (
-      history.push('/EmailGatinhos')
-    );
-  }
-
-  function getOnibus(){    
-    return (
-      history.push('/Onibus')
-    );
-  }
-
-  useEffect(()=> {
-    const data = JSON.stringify(aux);
-    localStorage.setItem('tasks', data);
-  },[aux])
 
   function handleAdd(){
     setAux([...aux, value]);
@@ -191,15 +169,15 @@ export default function MiniDrawer() {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
-          <ListItem button key={'Enviar email para um gatinho'} onClick={() => getEmailGatinhos()}>
+          <ListItem button key={'Enviar gatinhos via email'}>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <ListItemText primary='Enviar email para um gatinho' />
+            <ListItemText primary='Enviar gatinhos via email' />
           </ListItem>
-          <ListItem button key={'Pegar ônibus'} onClick={() => getOnibus()}>
+          <ListItem button key={'Pegar ônibus'}>
             <ListItemIcon><AirportShuttleIcon /></ListItemIcon>
             <ListItemText primary='Pegar ônibus' />
           </ListItem>
-          <ListItem button key={'Adotar gatinho'} onClick={() => getAdotarGatinhos()}>
+          <ListItem button key={'Adotar gatinho'}>
             <ListItemIcon><FavoriteIcon /></ListItemIcon>
             <ListItemText primary='Adotar gatinho' />
           </ListItem>
