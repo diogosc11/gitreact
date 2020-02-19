@@ -29,17 +29,6 @@ export const Input = styled.input`
     border-radius: 3px;
 `;
 
-export const Message = styled.input`
-    padding: 0.5em;
-    margin: 0.5em;
-    color: white;
-    background: #3f51b5;
-    border: none;
-    border-radius: 3px;
-    box-sizing: border-box;
-    resize: none;
-`;
-
 
 export const Ul = styled.ul`
     list-style-type: none;

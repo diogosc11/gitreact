@@ -174,9 +174,9 @@ export default function MiniDrawer() {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
-          <ListItem button key={'Enviar email para um gatinho'} onClick={() => getEmailGatinhos()}>
+          <ListItem button key={'Enviar gatinhos via email'} onClick={() => getEmailGatinhos()}>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <ListItemText primary='Enviar email para um gatinho' />
+            <ListItemText primary='Enviar gatinhos via email' />
           </ListItem>
           <ListItem button key={'Pegar ônibus'} onClick={() => getOnibus()}>
             <ListItemIcon><AirportShuttleIcon /></ListItemIcon>

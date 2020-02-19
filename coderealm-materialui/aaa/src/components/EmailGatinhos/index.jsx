@@ -17,7 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon} from './styled';
+import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon} from '../Drawer/styled';
 import Footer from '../Footer';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -90,6 +90,8 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState('');
+  const [aux, setAux] = React.useState([]);
   const history = useHistory();
 
   function getAdotarGatinhos(){    
@@ -123,6 +125,11 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const filter2 = useCallback((index) => {
+    const newTasks = aux.filter((task, taskIndex) => taskIndex !== index);
+    setAux(newTasks);
+  }, [aux]);
 
   return (
     <div className={classes.root}>
@@ -174,9 +181,9 @@ export default function MiniDrawer() {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
-          <ListItem button key={'Enviar email para um gatinho'} onClick={() => getEmailGatinhos()}>
+          <ListItem button key={'Enviar gatinhos via email'} onClick={() => getEmailGatinhos()}>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <ListItemText primary='Enviar email para um gatinho' />
+            <ListItemText primary='Enviar gatinhos via email' />
           </ListItem>
           <ListItem button key={'Pegar ônibus'} onClick={() => getOnibus()}>
             <ListItemIcon><AirportShuttleIcon /></ListItemIcon>
@@ -184,14 +191,13 @@ export default function MiniDrawer() {
           </ListItem>
           <ListItem button key={'Adotar gatinho'} onClick={() => getAdotarGatinhos()}>
             <ListItemIcon><FavoriteIcon /></ListItemIcon>
-            <ListItemText primary='Adotar gatinho' />
+            <ListItemText primary='Enviar email com gatinho' />
           </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Title>A importância de adotar gatinhos</Title>
-        
+        <Title>A importância de enviar gatinhos</Title>     
       </main>
     </div>
   );
