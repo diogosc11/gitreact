@@ -136,7 +136,7 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const filter3 = useCallback((index) => {
+  const deleteTask = useCallback((index) => {
     const newTasks = aux.filter((task, taskIndex) => taskIndex !== index);
     setAux(newTasks);
   }, [aux]);
@@ -214,7 +214,7 @@ export default function MiniDrawer() {
         <Ul>
           {aux.map((element, index) => {
             return (
-              <Li key={index}>{element} <StyledDeleteIcon index={index} onClick = {() => {filter3(index)}}/></Li>
+              <Li key={index}>{element} <StyledDeleteIcon index={index} onClick = {() => {deleteTask(index)}}/></Li>
             );
           })}
         </Ul>
