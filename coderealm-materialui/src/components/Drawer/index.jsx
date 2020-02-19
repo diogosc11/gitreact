@@ -191,6 +191,10 @@ export default function MiniDrawer() {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
+          <ListItem button key={'Enviar fotos de gatinhos'} onClick={() => getSendGatinhos()}>
+            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemText primary='Enviar fotos de gatinhos' />
+          </ListItem>
           <ListItem button key={'Enviar email para um gatinho'} onClick={() => getEmailGatinhos()}>
             <ListItemIcon><MailIcon /></ListItemIcon>
             <ListItemText primary='Enviar email para um gatinho' />
