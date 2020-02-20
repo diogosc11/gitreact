@@ -17,11 +17,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon} from '../Drawer/styled';
+import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon, Message} from './styled';
 import Footer from '../Footer';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
 
 const drawerWidth = 300;
 
@@ -181,9 +182,9 @@ export default function MiniDrawer() {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
-          <ListItem button key={'Enviar gatinhos via email'} onClick={() => getEmailGatinhos()}>
+          <ListItem button key={'Enviar email para um gatinho'} onClick={() => getEmailGatinhos()}>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <ListItemText primary='Enviar gatinhos via email' />
+            <ListItemText primary='Enviar email para um gatinho' />
           </ListItem>
           <ListItem button key={'Pegar ônibus'} onClick={() => getOnibus()}>
             <ListItemIcon><AirportShuttleIcon /></ListItemIcon>
@@ -191,13 +192,21 @@ export default function MiniDrawer() {
           </ListItem>
           <ListItem button key={'Adotar gatinho'} onClick={() => getAdotarGatinhos()}>
             <ListItemIcon><FavoriteIcon /></ListItemIcon>
-            <ListItemText primary='Enviar email com gatinho' />
+            <ListItemText primary='Adotar gatinho' />
           </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Title>A importância de enviar gatinhos</Title>     
+        <Title>A importância de enviar gatinhos</Title>
+        <form>
+          <Text>Nome:</Text>
+          <Input id='inputnome' size="80" autofocus='autofocus'></Input>
+          <Text>Email:</Text>
+          <Input id='inputnome' size="80" ></Input>
+          <Text>Mensagem:</Text>
+          <Message id='inputnome' size="80"></Message>
+        </form>     
       </main>
     </div>
   );

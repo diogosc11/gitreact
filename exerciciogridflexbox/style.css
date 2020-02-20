@@ -1,0 +1,46 @@
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-areas:
+        "header header"
+        "aside gatinho"
+        "aside footer";
+    }
+    
+    .header {
+        grid-area: header;
+        background-color: #84a8b6;
+    }
+    .gatinho {
+        grid-area: gatinho;
+        background-color: #e5eff4;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    .aside {
+        grid-area: aside;
+        background-color: red;
+    }
+    .footer {
+        grid-area: footer;
+        background-color: #84a8b6;
+    }
+    
+    .gatinho-box {
+        background-color: blue;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    .gatinho-box-box {
+        width: 50px;
+        height: 50px;
+        background-color: seagreen;
+    }

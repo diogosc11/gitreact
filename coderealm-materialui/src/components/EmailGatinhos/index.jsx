@@ -17,12 +17,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon, Message} from './styled';
+import {Title, Text, Button, Input, Ul, Li, StyledDeleteIcon, Message, StyledTextField} from './styled';
 import Footer from '../Footer';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-router-dom";
-import TextField from '@material-ui/core/TextField';
 
 const drawerWidth = 300;
 
@@ -84,6 +83,9 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  textField: {
+    width: 600,
   },
 }));
 
@@ -201,11 +203,11 @@ export default function MiniDrawer() {
         <Title>A importância de enviar gatinhos</Title>
         <form>
           <Text>Nome:</Text>
-          <Input id='inputnome' size="80" autofocus='autofocus'></Input>
+          <Input id='inputnome' size="80" autofocus='autofocus' className={clsx(classes.textField)} variant="outlined"></Input>
           <Text>Email:</Text>
-          <Input id='inputnome' size="80" ></Input>
+          <Input id='inputnome' size="80" className={clsx(classes.textField)} variant="outlined"></Input>
           <Text>Mensagem:</Text>
-          <Message id='inputnome' size="80"></Message>
+          <StyledTextField id='inputnome' multiline='true' variant="outlined" rows="8" className={clsx(classes.textField)}></StyledTextField>
         </form>     
       </main>
     </div>

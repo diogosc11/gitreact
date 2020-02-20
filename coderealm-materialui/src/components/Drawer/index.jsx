@@ -136,7 +136,7 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const deleteTask = useCallback((index) => {
+  const filter2 = useCallback((index) => {
     const newTasks = aux.filter((task, taskIndex) => taskIndex !== index);
     setAux(newTasks);
   }, [aux]);
@@ -191,10 +191,6 @@ export default function MiniDrawer() {
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary='Enviar fotos de gatinhos' />
           </ListItem>
-          <ListItem button key={'Enviar fotos de gatinhos'} onClick={() => getSendGatinhos()}>
-            <ListItemIcon><AirportShuttleIcon /></ListItemIcon>
-            <ListItemText primary='Enviar fotos de cachorrinhos' />
-          </ListItem>
           <ListItem button key={'Enviar email para um gatinho'} onClick={() => getEmailGatinhos()}>
             <ListItemIcon><MailIcon /></ListItemIcon>
             <ListItemText primary='Enviar email para um gatinho' />
@@ -218,7 +214,7 @@ export default function MiniDrawer() {
         <Ul>
           {aux.map((element, index) => {
             return (
-              <Li key={index}>{element} <StyledDeleteIcon index={index} onClick = {() => {deleteTask(index)}}/></Li>
+              <Li key={index}>{element} <StyledDeleteIcon index={index} onClick = {() => {filter2(index)}}/></Li>
             );
           })}
         </Ul>

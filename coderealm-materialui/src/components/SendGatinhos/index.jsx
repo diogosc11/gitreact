@@ -203,13 +203,10 @@ export default function MiniDrawer() {
         <div className={classes.toolbar} />
         <Title>A importância de enviar gatinhos</Title>
         <Text>Gatos são majestosos por excelência. Quando filhotes, são ainda mais apaixonantes. Para quem está pensando em adquirir um bebê felino, é importante saber que eles têm exigências diferentes dos adultos. A alimentação deve ser específica para filhotes, que garante todos os nutrientes necessários para o desenvolvimento deles. “Existem rações para gatinhos de até quatro meses, de quatro a 12 meses e, inclusive, para filhotes castrados”, diz a Dra. Vanessa Zimbres, médica veterinária da clínica Gato é Gente Boa, em Itu, especializada em gatos. Segundo ela, “é importante, desde cedo, acostumar os gatinhos a aceitarem a alimentação úmida − sachês, latinhas, também específica para filhotes”. Isso porque a ração úmida fornece maior quantidade de proteínas e ajuda a hidratar o corpo dos pequenos. Outra recomendação da veterinária é desvermifugar os filhotes a partir dos 21 dias de vida, antes de começar o esquema de vacinação. Para gatinhos de 45 a 60 dias, é recomendada a primeira dose da vacina múltipla, que protege contra rinotraqueíte, leucemia felina, entre outras doenças. A segunda dose deve ser dada 21 dias depois e, a partir dos quatro meses de idade, já se pode começar a vacinação antirrábica, de frequência anual. Também vale lembrar que filhotes muito novinhos podem não conhecer onde devem ou não fazer xixi. Por isso, é importante deixar a caixa de areia higiênica em um lugar de fácil acesso ao gatinho, que, por instinto, irá se habituar a usá-la sempre que precisar. Dependendo do tamanho da casa, pode ser necessário ter mais de uma caixa, posicionadas em lugares estratégicos e muito frequentados pelo filhote. O melhor a fazer, quando se receber um filhotinho em casa, é procurar a opinião de um veterinário, que saberá orientar sobre os melhores cuidados para seu bichano.</Text>
-        <img src={'https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_960_720.png'} alt="" width='150px'/>
         <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-        <br />
-        <Button>UPLOAD</Button>
         <label htmlFor="icon-button-file">
           <IconButton color="primary" aria-label="upload picture" component="span">
-            <PhotoCamera />
+          <img src={'https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_960_720.png'} alt="" width='150px'/>
           </IconButton>
         </label>
               

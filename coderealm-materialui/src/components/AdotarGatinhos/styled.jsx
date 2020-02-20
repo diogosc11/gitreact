@@ -41,6 +41,22 @@ export const Li = styled.li`
     grid-template-columns: 1fr 1fr;
 `;
 
+export const DivGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+`;
+
+export const FlexImage = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+`;
+
+export const ImageBox = styled.div`
+
+`;
+
 export const StyledDeleteIcon = styled(DeleteIcon)`
     
 `;

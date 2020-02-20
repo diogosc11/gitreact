@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import DeleteIcon from '@material-ui/icons/Delete';
+import TextField from '@material-ui/core/TextField';
 
 export const Title = styled.h2`
     color: #3f51b5;
@@ -20,11 +21,9 @@ export const Button = styled.button`
     border-radius: 3px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(TextField)`
     padding: 0.5em;
     margin: 0.5em;
-    color: white;
-    background: #3f51b5;
     border: none;
     border-radius: 3px;
 `;
@@ -37,7 +36,7 @@ export const Message = styled.input`
     border: none;
     border-radius: 3px;
     box-sizing: border-box;
-    resize: none;
+    height: 200px;
 `;
 
 
@@ -55,4 +54,12 @@ export const Li = styled.li`
 
 export const StyledDeleteIcon = styled(DeleteIcon)`
     
+`;
+
+export const StyledTextField = styled(TextField)`
+    padding: 0.5em;
+    margin: 0.5em;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;    
 `;
