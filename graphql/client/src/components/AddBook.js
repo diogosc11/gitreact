@@ -1,14 +1,39 @@
 import React, { useState } from 'react';
 import {graphql, useQuery} from 'react-apollo';
-import {getAuthorsQuery, addBookMutation} from '../queries/queries';
+import {getAuthorsQuery} from '../queries/queries';
 import {flowRight as compose} from 'lodash';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+
+const addBookMutation = gql`
+    mutation addBookMutation($name: String!, $genre: String!, $authorId: ID!){
+        addBook(name: $name, genre: $genre, authorId: $authorId){
+            name
+            id
+            authorId
+        }
+    }
+`;
 
 function AddBook() {
     const {loading, error, data} = useQuery(getAuthorsQuery);
     
     const [bookName, setBookName] = useState('');
     const [genre, setGenre] = useState('');
-    const [author, setAuthor] = useState(null);
+    const [authorId, setAuthor] = useState([]);
+    const [addBook] = useMutation(addBookMutation);
+
+    function displayAuthors() {
+        let dat = data;
+        if(dat.loading){
+            return <option disabled>Loading authors...</option>
+        } 
+        else{
+            return dat.authors.map(author => {
+                return <option key={author.id} value={author.id}>{author.name}</option>
+            })
+        }
+    }
 
     if(loading){
         return <p>Loading</p>
@@ -20,13 +45,17 @@ function AddBook() {
 
     const handleAdd = (e) => {
         e.preventDefault();
-        if(author == null){
+        if(authorId == null){
             alert('Select an author');
         }
         else{
-           
+           addBook({variables: {
+               name: bookName,
+               genre,
+               authorId,
+           }})
         }
-        console.log(bookName, genre, author);
+        console.log(bookName, genre, authorId);
     }
   
     return (
@@ -45,12 +74,8 @@ function AddBook() {
           <div className='field'>
               <label>Author:</label>
               <select onChange={event => setAuthor(event.target.value)}>
-                <option key={0}>Select Author</option>
-                  {data.authors.map((author, index) => {
-                      return (
-                        <option key={index}>{author.name}</option>
-                      )
-                  })}
+                <option>Select Author</option>
+                  {displayAuthors()}
               </select>
           </div>
           <button>Add</button>
